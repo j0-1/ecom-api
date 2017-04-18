@@ -15,7 +15,7 @@ This is a sample application for building a rails 5.0.2 api for an e-commerce do
 ## UI
 The source for the frontend UI is in this repo .  I used Elm for this as I have been experimenting with it lately and have been enjoying it.
 
-I've included the compiled version of the latest code in this project so that you can see the UI easily hosted by the rails server also at `localhost:3000/inventory`
+I've included the compiled version of the latest code in this project's public dir so that you can see the UI easily hosted by the rails server at `localhost:3000`
 
 ## Data Model
 There are three models representing the data: Product, Image and Variant.
