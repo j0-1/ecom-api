@@ -32,7 +32,6 @@ RSpec.describe ImportVariants, type: :model do
 
       it 'succeeds' do
         subject.import
-        puts subject.errors.full_messages
         expect(subject.import).to be_truthy
       end
 
