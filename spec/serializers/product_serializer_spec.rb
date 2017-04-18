@@ -6,7 +6,7 @@ describe ProductSerializer, type: :serializer do
 
   context 'json body' do
     it 'has expected keys' do
-      expect(serialized.keys).to include(:name, :description, :images, :variants)
+      expect(serialized.keys).to include(:id, :name, :description, :images, :variants)
     end
   end
 end
