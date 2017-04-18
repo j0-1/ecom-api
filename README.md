@@ -13,7 +13,7 @@ This is a sample application for building a rails 5.0.2 api for an e-commerce do
 * See the inventory (with products and variants) `curl -v :3000/api/v1/inventory`
 
 ## UI
-The source for the frontend UI is in this repo .  I used Elm for this as I have been experimenting with it lately and have been enjoying it.
+The source for the frontend UI is in this repo [ecom-ui](https://github.com/joestraitiff/ecom-ui).  I used Elm for this as I have been experimenting with it lately and have been enjoying it.
 
 I've included the compiled version of the latest code in this project's public dir so that you can see the UI easily hosted by the rails server at `localhost:3000`
 
