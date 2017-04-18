@@ -9074,18 +9074,62 @@ var _user$project$Image$imageDecoder = A2(
 	A2(_elm_lang$core$Json_Decode$field, 'url', _elm_lang$core$Json_Decode$string));
 var _user$project$Image$imagesDecoder = _elm_lang$core$Json_Decode$list(_user$project$Image$imageDecoder);
 
+var _user$project$Variant$viewVariantHeader = A2(
+	_elm_lang$html$Html$tr,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$th,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('Inventory Count'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$th,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Waist'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$th,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Length'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$th,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Style'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
 var _user$project$Variant$viewVariant = function (variant) {
 	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('variants'),
-			_1: {ctor: '[]'}
-		},
+		_elm_lang$html$Html$tr,
+		{ctor: '[]'},
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$span,
+				_elm_lang$html$Html$td,
 				{ctor: '[]'},
 				{
 					ctor: '::',
@@ -9096,69 +9140,36 @@ var _user$project$Variant$viewVariant = function (variant) {
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$span,
+					_elm_lang$html$Html$td,
 					{ctor: '[]'},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text(' '),
+						_0: _elm_lang$html$Html$text(
+							_elm_lang$core$Basics$toString(variant.waist)),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$span,
+						_elm_lang$html$Html$td,
 						{ctor: '[]'},
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html$text(
-								_elm_lang$core$Basics$toString(variant.waist)),
+								_elm_lang$core$Basics$toString(variant.length)),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
 						ctor: '::',
 						_0: A2(
-							_elm_lang$html$Html$span,
+							_elm_lang$html$Html$td,
 							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text(' '),
+								_0: _elm_lang$html$Html$text(variant.style),
 								_1: {ctor: '[]'}
 							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$span,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(
-										_elm_lang$core$Basics$toString(variant.length)),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$span,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text(' '),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$span,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text(variant.style),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
-								}
-							}
-						}
+						_1: {ctor: '[]'}
 					}
 				}
 			}
@@ -9166,10 +9177,15 @@ var _user$project$Variant$viewVariant = function (variant) {
 };
 var _user$project$Variant$viewVariantList = function (variants) {
 	var listOfVariants = A2(_elm_lang$core$List$map, _user$project$Variant$viewVariant, variants);
+	var variantsTable = {ctor: '::', _0: _user$project$Variant$viewVariantHeader, _1: listOfVariants};
 	return A2(
-		_elm_lang$html$Html$ul,
-		{ctor: '[]'},
-		listOfVariants);
+		_elm_lang$html$Html$table,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('variants'),
+			_1: {ctor: '[]'}
+		},
+		variantsTable);
 };
 var _user$project$Variant$Variant = F4(
 	function (a, b, c, d) {
@@ -9191,24 +9207,35 @@ var _user$project$Product$viewProduct = function (product) {
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$span,
+				_elm_lang$html$Html$h2,
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Product #'),
-					_1: {ctor: '[]'}
+					_0: A2(
+						_elm_lang$html$Html$span,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Product #'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$span,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									_elm_lang$core$Basics$toString(product.id)),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
 				}),
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$span,
-					{ctor: '[]'},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							_elm_lang$core$Basics$toString(product.id)),
-						_1: {ctor: '[]'}
-					}),
+				_0: _user$project$Image$viewImageList(product.images),
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -9221,12 +9248,8 @@ var _user$project$Product$viewProduct = function (product) {
 						}),
 					_1: {
 						ctor: '::',
-						_0: _user$project$Image$viewImageList(product.images),
-						_1: {
-							ctor: '::',
-							_0: _user$project$Variant$viewVariantList(product.variants),
-							_1: {ctor: '[]'}
-						}
+						_0: _user$project$Variant$viewVariantList(product.variants),
+						_1: {ctor: '[]'}
 					}
 				}
 			}
@@ -9276,10 +9299,36 @@ var _user$project$Inventory$viewFooter = A2(
 			},
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html$text('E-commerce UI'),
+				_0: _elm_lang$html$Html$text('E-commerce API'),
 				_1: {ctor: '[]'}
 			}),
-		_1: {ctor: '[]'}
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$span,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(' | '),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$a,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$href('http://github.com'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Ecommerce UI'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		}
 	});
 var _user$project$Inventory$viewHeader = function (title) {
 	return A2(
